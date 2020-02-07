@@ -12,8 +12,11 @@ get-aduser -filter  *  -properties passwordlastset, passwordneverexpires |ft use
 #search based ou
 Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=COM"   -properties passwordlastset, passwordneverexpires | Format-Table userprincipalName,passwordlastset,Passwordneverexpires | Where-Object {$_.passwordneverexpires}
 
-#search based ou w/ filter object "true"
-Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=COM"   -properties passwordlastset,passwordneverexpires | Where-Object {$_.passwordneverexpires -eq "true"} | Format-Table userprincipalName,passwordlastset,Passwordneverexpires
+#search based ou w/ filter object "true" (tinggal diganti) "" kosong berarti false
+Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=COM"   -properties passwordlastset,passwordneverexpires | Where-Object {$_.passwordneverexpires -eq ""} | Format-Table userprincipalName,passwordlastset,Passwordneverexpires
 
 #search based ou w/ filter object "true" + export 
-Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=COM"   -properties passwordlastset,passwordneverexpires | Where-Object {$_.passwordneverexpires -eq "true"} | Format-Table userprincipalName,passwordlastset,Passwordneverexpires | export-csv X:\powershell\export\password_expiring_test.csv -NoTypeInformation
+Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=COM"   -properties passwordlastset,passwordneverexpires | Where-Object {$_.passwordneverexpires -eq "false"} | Format-Table userprincipalName,passwordlastset,Passwordneverexpires
+
+#menampilkan grid view
+Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=COM"   -properties passwordlastset,passwordneverexpires | Where-Object {$_.passwordneverexpires -eq ""} | Out-GridView -PassThru
