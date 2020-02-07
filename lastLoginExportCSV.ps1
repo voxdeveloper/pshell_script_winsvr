@@ -1,0 +1,1 @@
+﻿Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=com" -Properties LastLogondate, Modified | export-csv x:\powershell\export\ntl.csv

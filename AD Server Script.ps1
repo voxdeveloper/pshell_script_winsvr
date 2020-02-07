@@ -18,5 +18,5 @@ Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=COM"   -propert
 #search based ou w/ filter object "true" + export 
 Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=COM"   -properties passwordlastset,passwordneverexpires | Where-Object {$_.passwordneverexpires -eq "false"} | Format-Table userprincipalName,passwordlastset,Passwordneverexpires
 
-#menampilkan grid view
+#menampilkan out-gridview
 Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=COM"   -properties passwordlastset,passwordneverexpires | Where-Object {$_.passwordneverexpires -eq ""} | Out-GridView -PassThru
