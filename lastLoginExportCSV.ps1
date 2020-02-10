@@ -1,1 +1,1 @@
-﻿Get-ADUser -Filter * -SearchBase "OU=fad,DC=data,DC=wpsmanado,DC=com" -Properties LastLogondate, Modified | export-csv x:\powershell\export\ntl.csv
+﻿Get-ADUser -Filter * -SearchBase "DC=data,DC=wpsmanado,DC=com" -Properties LastLogondate, Modified | export-csv x:\powershell\export\last_logon_20200207.csv
